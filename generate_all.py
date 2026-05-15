@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Master generator — produces all SVG components for the GitHub profile README.
   1. header.svg   — terminal-style identity card
