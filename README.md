@@ -1,16 +1,15 @@
-## Hi there 👋
+<p align="center">
+  <img src="header.svg" alt="header" width="100%"/>
+</p>
 
-<!--
-**princymaheshwari/princymaheshwari** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+<p align="center">
+  <img src="stats-bar.svg" alt="stats" width="100%"/>
+</p>
 
-Here are some ideas to get you started:
+<p align="center">
+  <img src="github-city.svg" alt="GitHub City — each building is a repo, height = commits" width="100%"/>
+</p>
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+<p align="center">
+  <img src="footer.svg" alt="footer" width="100%"/>
+</p>
