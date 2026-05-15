@@ -104,7 +104,7 @@ def generate_header_svg():
       <tspan fill="#f59e0b">&#9889; FOCUS</tspan><tspan fill="#64748b" dx="8">SEP Detection &#183; Deep Learning &#183; Physics-Informed Systems</tspan>
     </text>
     <text x="30" y="152" font-family="JetBrains Mono,Fira Code,monospace" font-size="11">
-      <tspan fill="#10b981">&#11042; STACK</tspan><tspan fill="#64748b" dx="8">Python &#183; NumPy &#183; Plotly &#183; Matplotlib &#183; C</tspan>
+      <tspan fill="#10b981">&#11042; STACK</tspan><tspan fill="#64748b" dx="8">Python &#183; NumPy &#183; Pandas &#183; scikit-learn &#183; FastAPI &#183; PyTorch &#183; TensorFlow</tspan>
     </text>
     <text x="30" y="172" font-family="JetBrains Mono,Fira Code,monospace" font-size="11">
       <tspan fill="#8b5cf6">&#9672; BASE</tspan><tspan fill="#64748b" dx="10">Georgia State University &#183; Atlanta, GA</tspan>
@@ -116,8 +116,8 @@ def generate_header_svg():
     <text x="625" y="86" font-family="JetBrains Mono,Fira Code,monospace" font-size="10"><tspan fill="#10b981">&#9679;</tspan><tspan fill="#94a3b8" dx="4">SEP Research</tspan><tspan fill="#10b981" dx="6">ACTIVE</tspan></text>
     <text x="625" y="104" font-family="JetBrains Mono,Fira Code,monospace" font-size="10"><tspan fill="#f59e0b">&#9679;</tspan><tspan fill="#94a3b8" dx="4">DL Coursera</tspan><tspan fill="#f59e0b" dx="6">IN PROG</tspan></text>
     <text x="625" y="122" font-family="JetBrains Mono,Fira Code,monospace" font-size="10"><tspan fill="#10b981">&#9679;</tspan><tspan fill="#94a3b8" dx="4">Open to Collab</tspan><tspan fill="#10b981" dx="6">YES</tspan></text>
-    <text x="625" y="140" font-family="JetBrains Mono,Fira Code,monospace" font-size="10"><tspan fill="#3b82f6">&#9679;</tspan><tspan fill="#94a3b8" dx="4">AI Agents</tspan><tspan fill="#3b82f6" dx="6">EXPLORING</tspan></text>
-    <text x="625" y="166" font-family="JetBrains Mono,Fira Code,monospace" font-size="9" fill="#334155">uptime: undergrad_y3 &#183; ATL</text>
+    <text x="625" y="140" font-family="JetBrains Mono,Fira Code,monospace" font-size="10"><tspan fill="#3b82f6">&#9679;</tspan><tspan fill="#94a3b8" dx="4">AI Infrastructure</tspan><tspan fill="#3b82f6" dx="6">EXPLORING</tspan></text>
+    <text x="625" y="166" font-family="JetBrains Mono,Fira Code,monospace" font-size="9" fill="#334155">ATL</text>
     <text x="625" y="178" font-family="JetBrains Mono,Fira Code,monospace" font-size="9" fill="#334155">ping: always reachable</text>
 
     <rect width="840" height="200" rx="8" fill="none" stroke="#1e293b" stroke-width="1.5"/>
