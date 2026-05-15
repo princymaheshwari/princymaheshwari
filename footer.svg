@@ -6,16 +6,10 @@
       <tspan fill="#10b981">princy</tspan><tspan fill="#475569">@</tspan><tspan fill="#3b82f6">github</tspan><tspan fill="#475569"> ~ % </tspan><tspan fill="#94a3b8">echo $CONNECT</tspan>
     </text>
     <text x="20" y="38" font-family="JetBrains Mono,Fira Code,monospace" font-size="10">
-      <tspan fill="#64748b">&#9654; </tspan>
-      <a href="https://www.linkedin.com/in/princy-maheshwari1/" target="_blank" rel="noopener noreferrer">
-        <tspan fill="#f59e0b">linkedin</tspan>
-      </a>
-      <tspan fill="#475569"> &#183; </tspan>
-      <a href="https://princymaheshwari.me" target="_blank" rel="noopener noreferrer">
-        <tspan fill="#f59e0b">portfolio</tspan>
-      </a>
+      <tspan fill="#64748b">&#9654; </tspan><tspan fill="#f59e0b">linkedin/princy-maheshwari1</tspan><tspan fill="#475569"> &#183; </tspan><tspan fill="#f59e0b">princymaheshwari.me</tspan>
     </text>
-    <rect x="165" y="28" width="7" height="14" fill="#10b981" opacity="0.8">
+    <text x="20" y="38" font-family="JetBrains Mono,Fira Code,monospace" font-size="7" fill="#334155" dy="0" dx="0"></text>
+    <rect x="345" y="28" width="7" height="14" fill="#10b981" opacity="0.8">
       <animate attributeName="opacity" values="0.8;0;0.8" dur="1.2s" repeatCount="indefinite"/>
     </rect>
     <text x="820" y="32" text-anchor="end" font-family="JetBrains Mono,Fira Code,monospace" font-size="8" fill="#1e293b">auto-generated via GitHub Actions</text>
