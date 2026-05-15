@@ -13,3 +13,9 @@
 <p align="center">
   <img src="footer.svg" alt="footer" width="100%"/>
 </p>
+
+<p align="center">
+  <a href="https://www.linkedin.com/in/princy-maheshwari1/">linkedin</a>
+  &middot;
+  <a href="https://princymaheshwari.me">portfolio</a>
+</p>
