@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 50" width="100%">
+  <defs><clipPath id="fClip"><rect width="840" height="50" rx="6"/></clipPath></defs>
+  <g clip-path="url(#fClip)">
+    <rect width="840" height="50" fill="#0a0e17" stroke="#1e293b" stroke-width="1" rx="6"/>
+    <text x="20" y="20" font-family="JetBrains Mono,Fira Code,monospace" font-size="11">
+      <tspan fill="#10b981">princy</tspan><tspan fill="#475569">@</tspan><tspan fill="#3b82f6">github</tspan><tspan fill="#475569"> ~ % </tspan><tspan fill="#94a3b8">echo $CONNECT</tspan>
+    </text>
+    <text x="20" y="38" font-family="JetBrains Mono,Fira Code,monospace" font-size="10">
+      <tspan fill="#64748b">&#9654; </tspan><tspan fill="#f59e0b">linkedin</tspan><tspan fill="#475569"> &#183; </tspan><tspan fill="#f59e0b">email</tspan><tspan fill="#475569"> &#183; </tspan><tspan fill="#f59e0b">portfolio</tspan>
+    </text>
+    <rect x="200" y="28" width="7" height="14" fill="#10b981" opacity="0.8">
+      <animate attributeName="opacity" values="0.8;0;0.8" dur="1.2s" repeatCount="indefinite"/>
+    </rect>
+    <text x="820" y="32" text-anchor="end" font-family="JetBrains Mono,Fira Code,monospace" font-size="8" fill="#1e293b">auto-generated via GitHub Actions</text>
+  </g>
+</svg>
