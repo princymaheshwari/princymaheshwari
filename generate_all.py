@@ -198,7 +198,9 @@ def generate_city_svg(repo_data):
     MIN_W, MAX_W = 14, 30
     MIN_H, MAX_H = 20, 175
     GROUND_Y = 225
-    TOTAL_H = 260
+    # Extra height below skyline so angled repo labels don't crowd building bases (keep modest).
+    TOTAL_H = 272
+    LABEL_ANCHOR_Y = GROUND_Y + 17
     PAD_X = 20
 
     max_commits = max(c for _, c in repo_data) or 1
@@ -311,7 +313,7 @@ def generate_city_svg(repo_data):
 
         # Labels
         trunc = name[:10] + ".." if len(name) > 12 else name
-        parts.append(f'<text x="{bx + bw / 2}" y="{GROUND_Y + 9}" text-anchor="middle" class="rl" transform="rotate(50,{bx + bw / 2},{GROUND_Y + 9})">{trunc}</text>')
+        parts.append(f'<text x="{bx + bw / 2}" y="{LABEL_ANCHOR_Y}" text-anchor="middle" class="rl" transform="rotate(46,{bx + bw / 2},{LABEL_ANCHOR_Y})">{trunc}</text>')
         if bh > 30:
             parts.append(f'<text x="{bx + bw / 2}" y="{by - 3}" text-anchor="middle" class="cl">{commits}</text>')
 
