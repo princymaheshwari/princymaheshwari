@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 200" width="100%">
+  <defs>
+    <linearGradient id="termBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0a0e17"/>
+      <stop offset="100%" stop-color="#0d1220"/>
+    </linearGradient>
+    <filter id="textGlow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <clipPath id="roundedClip"><rect width="840" height="200" rx="8"/></clipPath>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <rect width="20" height="20" fill="none" stroke="#1a2235" stroke-width="0.3"/>
+    </pattern>
+  </defs>
+  <g clip-path="url(#roundedClip)">
+    <rect width="840" height="200" fill="url(#termBg)"/>
+    <rect width="840" height="200" fill="url(#grid)" opacity="0.5"/>
+
+    <rect width="840" height="28" fill="#0f1623"/>
+    <circle cx="16" cy="14" r="5" fill="#ff5f57"/>
+    <circle cx="34" cy="14" r="5" fill="#febc2e"/>
+    <circle cx="52" cy="14" r="5" fill="#28c840"/>
+    <text x="420" y="18" text-anchor="middle" font-family="JetBrains Mono,Fira Code,monospace" font-size="11" fill="#4a5568">princy@github ~ % whoami</text>
+
+    <text x="30" y="62" font-family="JetBrains Mono,Fira Code,monospace" font-size="10" fill="#3b82f6" opacity="0.4">&#9484;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9488;</text>
+    <text x="30" y="87" font-family="JetBrains Mono,Fira Code,monospace" font-size="24" font-weight="bold" filter="url(#textGlow)">
+      <tspan fill="#3b82f6">&#10095;</tspan><tspan fill="#e2e8f0"> Princy</tspan>
+    </text>
+    <text x="190" y="87" font-family="JetBrains Mono,Fira Code,monospace" font-size="12" fill="#64748b">// undergraduate researcher</text>
+    <text x="30" y="107" font-family="JetBrains Mono,Fira Code,monospace" font-size="10" fill="#3b82f6" opacity="0.4">&#9492;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9472;&#9496;</text>
+
+    <text x="30" y="132" font-family="JetBrains Mono,Fira Code,monospace" font-size="11">
+      <tspan fill="#f59e0b">&#9889; FOCUS</tspan><tspan fill="#64748b" dx="8">SEP Detection &#183; Deep Learning &#183; Physics-Informed Systems</tspan>
+    </text>
+    <text x="30" y="152" font-family="JetBrains Mono,Fira Code,monospace" font-size="11">
+      <tspan fill="#10b981">&#11042; STACK</tspan><tspan fill="#64748b" dx="8">Python &#183; NumPy &#183; Plotly &#183; Matplotlib &#183; C</tspan>
+    </text>
+    <text x="30" y="172" font-family="JetBrains Mono,Fira Code,monospace" font-size="11">
+      <tspan fill="#8b5cf6">&#9672; BASE</tspan><tspan fill="#64748b" dx="10">Georgia State University &#183; Atlanta, GA</tspan>
+    </text>
+
+    <rect x="610" y="40" width="210" height="148" rx="4" fill="#0c101c" stroke="#1e293b" stroke-width="1"/>
+    <text x="625" y="60" font-family="JetBrains Mono,Fira Code,monospace" font-size="9" fill="#475569">SYSTEM STATUS</text>
+    <line x1="625" y1="66" x2="805" y2="66" stroke="#1e293b" stroke-width="0.5"/>
+    <text x="625" y="86" font-family="JetBrains Mono,Fira Code,monospace" font-size="10"><tspan fill="#10b981">&#9679;</tspan><tspan fill="#94a3b8" dx="4">SEP Research</tspan><tspan fill="#10b981" dx="6">ACTIVE</tspan></text>
+    <text x="625" y="104" font-family="JetBrains Mono,Fira Code,monospace" font-size="10"><tspan fill="#f59e0b">&#9679;</tspan><tspan fill="#94a3b8" dx="4">DL Coursera</tspan><tspan fill="#f59e0b" dx="6">IN PROG</tspan></text>
+    <text x="625" y="122" font-family="JetBrains Mono,Fira Code,monospace" font-size="10"><tspan fill="#10b981">&#9679;</tspan><tspan fill="#94a3b8" dx="4">Open to Collab</tspan><tspan fill="#10b981" dx="6">YES</tspan></text>
+    <text x="625" y="140" font-family="JetBrains Mono,Fira Code,monospace" font-size="10"><tspan fill="#3b82f6">&#9679;</tspan><tspan fill="#94a3b8" dx="4">AI Agents</tspan><tspan fill="#3b82f6" dx="6">EXPLORING</tspan></text>
+    <text x="625" y="166" font-family="JetBrains Mono,Fira Code,monospace" font-size="9" fill="#334155">uptime: undergrad_y3 &#183; ATL</text>
+    <text x="625" y="178" font-family="JetBrains Mono,Fira Code,monospace" font-size="9" fill="#334155">ping: always reachable</text>
+
+    <rect width="840" height="200" rx="8" fill="none" stroke="#1e293b" stroke-width="1.5"/>
+  </g>
+</svg>
