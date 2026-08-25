@@ -30,7 +30,7 @@ OUT = os.path.join(ROOT, "portrait.txt")
 
 # ── tuning ────────────────────────────────────────────────────────────────────
 CROP = (140, 0, 720, 620)   # head + shoulders; face carries the frame
-COLS = 58
+COLS = 64
 CELL_ASPECT = 2.05          # monospace cell height / width
 
 BG_THRESHOLD = 10           # luminance at or below this is candidate background

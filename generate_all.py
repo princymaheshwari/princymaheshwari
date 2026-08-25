@@ -24,51 +24,65 @@ MAX_REPOS = int(os.environ.get("MAX_REPOS", "50"))
 HERE = os.path.dirname(os.path.abspath(__file__))
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# CONTENT — placeholder pending Princy's copy. Edit only this block.
+# CONTENT — edit only this block.
 #
-# Rows are (key, value). Anything in <angle brackets> is a stub. Values render
-# right-aligned against dot leaders, so keep them under ~46 characters.
+# Values are truncated past the row width, so keep them under ~50 characters.
 # ═══════════════════════════════════════════════════════════════════════════════
 
 USER, HOST = "princy", "github"
 
-WHOAMI = [
-    ("OS",     "<os>"),
-    ("Uptime", None),                 # None -> filled live from account age
-    ("Host",   "<school>"),
-    ("Kernel", "<role / title>"),
-    ("IDE",    "<editors>"),
+IDENTITY = [
+    ("Role",         "Developer building intelligent, compute-heavy systems"),
+    ("Host",         "Georgia State University"),
+    ("Privileges",   "Presidential Scholar · Honors College"),
+    ("Kernel",       "Computer Science + Mathematics"),
+    ("Base",         "Atlanta, GA"),
+    ("Environment",  "Serverless GPUs · HPC clusters · physical hardware"),
+    ("System calls", "perceive() · verify() · orchestrate() · recover()"),
 ]
 
-STACK = [
-    ("Languages.Programming", "<languages>"),
-    ("Languages.ML",          "<ml stack>"),
-    ("Languages.Infra",       "<infra>"),
-    ("Languages.Real",        "<spoken languages>"),
+# (name, tag, [(key, value), ...])
+SYSTEMS = [
+    ("ToolFinder", "HACKILLINOIS '26", [
+        ("pipeline", "Voice → semantic routing → parallel GPU vision"),
+        ("compute",  "Modal A10G/H100 · YOLO/SAM2 · SAM3 fallback"),
+        ("output",   "Pixel masks · centroids · physical laser targeting"),
+    ]),
+    ("Veritas", "NEXHACKS '26", [
+        ("pipeline", "GitHub webhook → parsers → AI comparison → issue"),
+        ("handles",  "Python/JS/TS/Java · Markdown · OpenAPI"),
+        ("result",   "Live GitHub App · analysis cost reduced by 96%"),
+    ]),
+    ("GeneFamilyConverge", "OPEN SOURCE", [
+        ("pipeline", "Portable HPC workflow orchestration"),
+        ("handles",  "Slurm arrays · resource constraints · backfill"),
+        ("result",   "114 species · multi-node · 2.83× speedup"),
+    ]),
+    ("SEP Event Pipeline", "VALIDATED", [
+        ("pipeline", "30 years · 4 instruments · 3 GOES eras + SOHO"),
+        ("handles",  "Fallbacks · format changes · schema drift"),
+        ("result",   "100% recall (159/159) · 92.4% precision"),
+    ]),
 ]
 
-SECTIONS = [
-    ("Research", [
-        ("Focus",  "<what you research>"),
-        ("Data",   "<datasets / instruments>"),
-        ("Method", "<approach>"),
-    ]),
-    ("Recent Builds", [
-        ("<repo-name>", "<one-line description>"),
-        ("<repo-name>", "<one-line description>"),
-        ("<repo-name>", "<one-line description>"),
-    ]),
-    ("Contact", [
-        ("LinkedIn",  "princy-maheshwari1"),
-        ("Portfolio", "princymaheshwari.me"),
-    ]),
+DEFAULTS = "portable > machine-bound · measured > assumed · automated > manual"
+
+NETWORK = [
+    ("Web",      "princymaheshwari.me"),
+    ("LinkedIn", "/in/princy-maheshwari1"),
 ]
+
+# Live repo/commit/language counts, pulled from the GitHub API. Off by default:
+# the card above is entirely static, so nothing is fetched and the daily Action
+# is a no-op. Flip to True to give it something to refresh.
+SHOW_STATS = False
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # Layout + palette
 # ═══════════════════════════════════════════════════════════════════════════════
 
-ROW_W = 72          # characters per info row
+ROW_W = 72          # characters per row in the right-hand column
+KEY_W = 18          # key is dot-padded to this width, then the value starts
 FS = 10.5           # font size, both columns
 CW = FS * 0.6       # monospace advance width
 LH = 15             # line height
@@ -80,11 +94,13 @@ C_BG      = "#080b12"
 C_PANEL   = "#0d1220"
 C_BORDER  = "#1c2740"
 C_TAB     = "#3d4a63"
-C_KEY     = "#f59e0b"
+C_HEAD    = "#e8eef7"   # SYSTEMS BUILT / DEFAULTS / NETWORK
+C_KEY     = "#f59e0b"   # top-level keys and project names
+C_SUBKEY  = "#6b7f9e"   # indented keys, which should recede
+C_TAG     = "#10b981"   # right-aligned project tags
 C_VAL     = "#c7d2e0"
 C_DOT     = "#28344d"
-C_RULE    = "#233150"
-C_SECTION = "#8296b8"
+C_RULE    = "#2e4165"
 C_ACCENT  = "#10b981"
 C_LINK    = "#60a5fa"
 
@@ -136,31 +152,6 @@ def fetch_commit_count(username, repo):
     return sum(c.get("contributions", 0) for c in data)
 
 
-def account_uptime(created):
-    """neofetch-style uptime, measured from account creation."""
-    if not created:
-        return "unknown"
-    start = datetime.date(int(created[0:4]), int(created[5:7]), int(created[8:10]))
-    today = datetime.date.today()
-    months = (today.year - start.year) * 12 + today.month - start.month
-    if today.day < start.day:
-        months -= 1
-    months = max(0, months)
-    y, m = divmod(months, 12)
-    anchor_y = start.year + (start.month - 1 + months) // 12
-    anchor_m = (start.month - 1 + months) % 12 + 1
-    anchor_d = min(start.day, [31, 29 if anchor_y % 4 == 0 else 28, 31, 30, 31, 30,
-                               31, 31, 30, 31, 30, 31][anchor_m - 1])
-    days = (today - datetime.date(anchor_y, anchor_m, anchor_d)).days
-
-    bits = []
-    if y:
-        bits.append(f"{y} year{'s' * (y != 1)}")
-    bits.append(f"{m} month{'s' * (m != 1)}")
-    bits.append(f"{days} day{'s' * (days != 1)}")
-    return ", ".join(bits)
-
-
 # ═══════════════════════════════════════════════════════════════════════════════
 # SVG helpers
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -192,25 +183,44 @@ def tone(ch):
     return TONES[-1][1]
 
 
-def row(key, value):
-    """'. key: ......... value', padded to exactly ROW_W characters."""
-    n = ROW_W - len(key) - len(value) - 5
-    if n < 2:
-        value = value[:max(0, ROW_W - len(key) - 7)] + ".."
-        n = ROW_W - len(key) - len(value) - 5
-    return [(". ", C_DOT), (key + ":", C_KEY),
-            (" " + "." * n + " ", C_DOT), (value, C_VAL)]
-
-
-def section(title):
-    tail = ROW_W - len(title) - 6
-    return [("- ", C_RULE), (title, C_SECTION), (" " + "─" * tail + "·~·", C_RULE)]
-
+# ── line builders ─────────────────────────────────────────────────────────────
 
 def prompt(user, host):
-    tail = ROW_W - len(user) - len(host) - 5
-    return [(user, C_ACCENT), ("@", C_RULE), (host, C_LINK),
-            (" " + "─" * tail + "·~·", C_RULE)]
+    return [(user, C_ACCENT), ("@", C_RULE), (host, C_LINK)]
+
+
+def rule():
+    return [("─" * ROW_W, C_RULE)]
+
+
+def header(title):
+    return [(title, C_HEAD)]
+
+
+def plain(text):
+    return [(text[:ROW_W], C_VAL)]
+
+
+def kv(key, value, indent=0):
+    """'key.......... value' — dot-padded to KEY_W, value left-aligned after."""
+    field = KEY_W - len(key)
+    room = ROW_W - indent - KEY_W - 1
+    if len(value) > room:
+        value = value[:max(0, room - 2)] + ".."
+    col = C_SUBKEY if indent else C_KEY
+    parts = []
+    if indent:
+        parts.append((" " * indent, C_DOT))
+    parts.append((key, col))
+    parts.append(("." * max(1, field) + " ", C_DOT))
+    parts.append((value, C_VAL))
+    return parts
+
+
+def titled(name, tag):
+    """Project name on the left, tag right-aligned to the row edge."""
+    gap = ROW_W - len(name) - len(tag)
+    return [(name, C_KEY), (" " * max(1, gap), C_DOT), (tag, C_TAG)]
 
 
 def spans_for_art(line):
@@ -233,43 +243,45 @@ def spans_for_art(line):
 # Panel
 # ═══════════════════════════════════════════════════════════════════════════════
 
-def build_lines(repos, repo_data, user_info):
-    uptime = account_uptime((user_info or {}).get("created_at"))
-    lines = [prompt(USER, HOST)]
-    for k, v in WHOAMI:
-        lines.append(row(k, uptime if v is None else v))
-    lines.append(None)
-    for k, v in STACK:
-        lines.append(row(k, v))
-    for title, rows in SECTIONS:
-        lines.append(None)
-        lines.append(section(title))
+def build_lines(repos, repo_data):
+    lines = [prompt(USER, HOST), rule()]
+    for k, v in IDENTITY:
+        lines.append(kv(k, v))
+
+    lines += [None, header("SYSTEMS BUILT"), rule()]
+    for i, (name, tag, rows) in enumerate(SYSTEMS):
+        if i:
+            lines.append(None)
+        lines.append(titled(name, tag))
         for k, v in rows:
-            lines.append(row(k, v))
+            lines.append(kv(k, v, indent=2))
 
-    # live stats
-    non_forks = [r for r in repos if not r.get("fork")]
-    commits = sum(c for _, c in repo_data)
-    counts = {}
-    for r in non_forks:
-        if r.get("language"):
-            counts[r["language"]] = counts.get(r["language"], 0) + 1
-    total = sum(counts.values()) or 1
-    mix = " · ".join(f"{k} {round(v / total * 100)}%"
-                          for k, v in sorted(counts.items(), key=lambda x: -x[1])[:3])
+    lines += [None, header("DEFAULTS"), rule(), plain(DEFAULTS)]
 
-    lines.append(None)
-    lines.append(section("GitHub Stats"))
-    lines.append(row("Repos", f"{len(non_forks)}  |  Commits: {commits:,}"))
-    lines.append(row("Top Languages", mix))
+    lines += [None, header("NETWORK"), rule()]
+    for k, v in NETWORK:
+        lines.append(kv(k, v))
+
+    if SHOW_STATS:
+        non_forks = [r for r in repos if not r.get("fork")]
+        counts = {}
+        for r in non_forks:
+            if r.get("language"):
+                counts[r["language"]] = counts.get(r["language"], 0) + 1
+        total = sum(counts.values()) or 1
+        mix = " · ".join(f"{k} {round(v / total * 100)}%"
+                         for k, v in sorted(counts.items(), key=lambda x: -x[1])[:3])
+        lines += [None, header("GITHUB"), rule(),
+                  kv("Repos", f"{len(non_forks)}  ·  commits {sum(c for _, c in repo_data):,}"),
+                  kv("Languages", mix)]
     return lines
 
 
-def generate_neofetch_svg(repos, repo_data, user_info):
+def generate_neofetch_svg(repos, repo_data):
     with open(os.path.join(HERE, "portrait.txt"), encoding="utf-8") as f:
         art = [l.rstrip("\n") for l in f if l.strip("\n")]
 
-    lines = build_lines(repos, repo_data, user_info)
+    lines = build_lines(repos, repo_data)
 
     art_cols = max(len(l) for l in art)
     txt_x = ART_X + art_cols * CW + GAP
@@ -323,44 +335,40 @@ def generate_neofetch_svg(repos, repo_data, user_info):
     out.append(f'    <rect x="{txt_x:.0f}" y="{cur_y:.0f}" width="{CW:.1f}" height="11" '
                f'fill="{C_ACCENT}" opacity="0.85"><animate attributeName="opacity" '
                f'values="0.85;0;0.85" dur="1.2s" repeatCount="indefinite"/></rect>')
-    out.append(f'    <text x="{W - 32}" y="{H - 26}" text-anchor="end" font-size="8" '
-               f'fill="#1b2740">auto-generated daily via GitHub Actions</text>')
     out.append('  </g>\n</svg>')
     return "\n".join(out)
 
 
 def main():
-    if not USERNAME:
-        print("Error: set GITHUB_USERNAME", file=sys.stderr)
-        sys.exit(1)
+    repos, repo_data = [], []
 
-    print(f"Fetching {USERNAME}...")
-    repos = fetch_repos(USERNAME)
-    if not repos:
-        print("No repos found.", file=sys.stderr)
-        sys.exit(1)
-    user_info = github_get(f"https://api.github.com/users/{USERNAME}")
+    if SHOW_STATS:
+        if not USERNAME:
+            print("Error: set GITHUB_USERNAME", file=sys.stderr)
+            sys.exit(1)
+        print(f"Fetching {USERNAME}...")
+        repos = fetch_repos(USERNAME)
+        if not repos:
+            print("No repos found.", file=sys.stderr)
+            sys.exit(1)
 
-    non_forks = [r for r in repos if not r.get("fork")][:MAX_REPOS]
-    repo_data, failed = [], []
-    for r in non_forks:
-        count = fetch_commit_count(USERNAME, r["name"])
-        if count is None:
-            failed.append(r["name"])
-        else:
-            repo_data.append((r["name"], count))
+        failed = []
+        for r in [x for x in repos if not x.get("fork")][:MAX_REPOS]:
+            count = fetch_commit_count(USERNAME, r["name"])
+            if count is None:
+                failed.append(r["name"])
+            else:
+                repo_data.append((r["name"], count))
 
-    if failed:
-        shown = ", ".join(failed[:5]) + ("..." if len(failed) > 5 else "")
-        print(f"Error: commit counts unavailable for {len(failed)} repo(s): {shown}\n"
-              f"Refusing to publish an understated total. Unauthenticated runs are "
-              f"capped at 60 requests/hour — set GITHUB_TOKEN.", file=sys.stderr)
-        sys.exit(1)
-
-    repo_data.sort(key=lambda x: x[1], reverse=True)
+        if failed:
+            shown = ", ".join(failed[:5]) + ("..." if len(failed) > 5 else "")
+            print(f"Error: commit counts unavailable for {len(failed)} repo(s): {shown}\n"
+                  f"Refusing to publish an understated total. Unauthenticated runs are "
+                  f"capped at 60 requests/hour — set GITHUB_TOKEN.", file=sys.stderr)
+            sys.exit(1)
 
     with open(os.path.join(HERE, "neofetch.svg"), "w", encoding="utf-8") as f:
-        f.write(generate_neofetch_svg(repos, repo_data, user_info))
+        f.write(generate_neofetch_svg(repos, repo_data))
     print("  wrote neofetch.svg")
 
 
