@@ -43,15 +43,15 @@ IDENTITY = [
 
 # (name, tag, [(key, value), ...])
 SYSTEMS = [
-    ("ToolFinder", "HACKILLINOIS '26", [
-        ("pipeline", "Voice → semantic routing → parallel GPU vision"),
-        ("compute",  "Modal A10G/H100 · YOLO/SAM2 · SAM3 fallback"),
-        ("output",   "Pixel masks · centroids · physical laser targeting"),
+    ("Cofounder", "CAL HACKS '26 · WINNER APIFY CHALLENGE", [
+        ("pipeline", "Founder intent → 11 AI agents → execution"),
+        ("handles",  "Creao AI · Apify · Convex · Linear · webhooks"),
+        ("result",   "Autonomous startup ops · approvals · recovery"),
     ]),
-    ("Veritas", "NEXHACKS '26", [
-        ("pipeline", "GitHub webhook → parsers → AI comparison → issue"),
-        ("handles",  "Python/JS/TS/Java · Markdown · OpenAPI"),
-        ("result",   "Live GitHub App · analysis cost reduced by 96%"),
+    ("BidBy", "HACK LIKE W@CC '26 · 2X WINNER", [
+        ("pipeline", "Email/Slack/Discord → 6 agents → bid analysis"),
+        ("handles",  "TypeScript · OpenClaw · SQLite · ElevenLabs"),
+        ("result",   "Risk-ranked bids · iMessage + voice alerts"),
     ]),
     ("GeneFamilyConverge", "OPEN SOURCE", [
         ("pipeline", "Portable HPC workflow orchestration"),
